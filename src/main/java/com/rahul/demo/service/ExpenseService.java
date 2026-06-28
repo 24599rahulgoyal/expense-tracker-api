@@ -1,5 +1,6 @@
 package com.rahul.demo.service;
 
+import com.rahul.demo.exception.ResourceNotFoundException;
 import com.rahul.demo.model.Expense;
 import com.rahul.demo.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ExpenseService {
     // Get expense by ID
     public Expense getExpenseById(Long id) {
         return expenseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Expense not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + id));
     }
 
     // Add new expense
